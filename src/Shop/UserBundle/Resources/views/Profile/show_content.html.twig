@@ -1,0 +1,72 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>Username:</b> {{ user.username }}</div>
+        <div class="panel-body">
+            <b>Email:</b> {{ user.email }}
+        </div>
+        <div class="panel-footer"><b>Balance:</b> {{ user.money }}$</div>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#listings">Listings</a></li>
+        <li><a data-toggle="tab" href="#inventory">Inventory</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="listings" style="padding: 20px;" class="tab-pane fade in active">
+            <div class="items">
+                <div class="row item-list ">
+                    <div class="col-xs-5 col-md-4 col-lg-3">
+                        <a href=""><div class="thumbnail-p" style="background: url('KARTINKATA TUKA') 50% 50% no-repeat; width: 150px; height: 150px ;"></div></a>
+                    </div>
+                    <div class="col-xs-5 col-lg-9">
+                        <a href="">zaglavie<p class="title"></p></a>
+                        <p class="description">opisanie</p>
+                        <p>Price: 69$</p>
+                        <p style="color: #919191;">Category: Electronics</p>
+                    </div>
+                </div>
+
+                <div class="row item-list ">
+                    <div class="col-xs-5 col-md-4 col-lg-3">
+                        <a href=""><div class="thumbnail-p" style="background: url('KARTINKATA TUKA') 50% 50% no-repeat; width: 150px; height: 150px ;"></div></a>
+                    </div>
+                    <div class="col-xs-5 col-lg-9">
+                        <a href="">zaglavie<p class="title"></p></a>
+                        <p class="description">opisanie</p>
+                        <p>Price: 69$</p>
+                        <p style="color: #919191;">Category: Electronics</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="inventory" style="padding: 20px;" class="tab-pane fade">
+            <div class="items">
+                <div class="row item-list ">
+                    <div class="col-xs-5 col-md-4 col-lg-3">
+                        <a href=""><div class="thumbnail-p" style="background: url('KARTINKATA TUKA') 50% 50% no-repeat; width: 150px; height: 150px ;"></div></a>
+                    </div>
+                    <div class="col-xs-5 col-lg-9">
+                        <a href="">zaglavie<p class="title"></p></a>
+                        <p class="description">opisanie</p>
+                        <p style="color: #919191;">Category: Electronics</p>
+                    </div>
+                </div>
+
+                <div class="row item-list ">
+                    <div class="col-xs-5 col-md-4 col-lg-3">
+                        <a href=""><div class="thumbnail-p" style="background: url('KARTINKATA TUKA') 50% 50% no-repeat; width: 150px; height: 150px ;"></div></a>
+                    </div>
+                    <div class="col-xs-5 col-lg-9">
+                        <a href="">zaglavie<p class="title"></p></a>
+                        <p class="description">opisanie</p>
+                        <p style="color: #919191;">Category: Electronics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

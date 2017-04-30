@@ -1,0 +1,7 @@
+[30-Apr-2017 03:43:02 Europe/Sofia] PHP Notice:  Undefined property: AppBundle\Entity\Product::$categoryId in /home/kachvam/shop.kachvam.xyz/src/AppBundle/Entity/Product.php on line 250
+[30-Apr-2017 03:43:02 Europe/Sofia] PHP Notice:  Undefined property: AppBundle\Entity\Product::$categoryId in /home/kachvam/shop.kachvam.xyz/src/AppBundle/Entity/Product.php on line 250
+[30-Apr-2017 05:06:37 Europe/Sofia] PHP Notice:  Undefined property: AppBundle\Entity\Product::$categoryId in /home/kachvam/shop.kachvam.xyz/src/AppBundle/Entity/Product.php on line 250
+[30-Apr-2017 05:06:37 Europe/Sofia] PHP Notice:  Undefined property: AppBundle\Entity\Product::$categoryId in /home/kachvam/shop.kachvam.xyz/src/AppBundle/Entity/Product.php on line 250
+[30-Apr-2017 05:06:47 Europe/Sofia] PHP Notice:  Undefined index: data-source in /home/kachvam/shop.kachvam.xyz/src/AppBundle/Form/ProductType.php on line 46
+[30-Apr-2017 08:30:39 Europe/Sofia] PHP Notice:  Undefined property: AppBundle\Entity\Product::$categoryId in /home/kachvam/shop.kachvam.xyz/src/AppBundle/Entity/Product.php on line 250
+[30-Apr-2017 08:30:39 Europe/Sofia] PHP Notice:  Undefined property: AppBundle\Entity\Product::$categoryId in /home/kachvam/shop.kachvam.xyz/src/AppBundle/Entity/Product.php on line 250

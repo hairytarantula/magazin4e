@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+
+
+{% block body %}
+
+    <div class="items">
+        {% for item in products %}
+                <div class="row item-list {% if loop.index is odd %}odd-item{% endif %}" id="item{{ item.product.id }}">
+                    <div class="col-xs-5 col-md-4 col-lg-3">
+                        <a href="{{ path('product_show', { 'id': item.product.id }) }}"><div class="thumbnail-p" style="background: url('{{ vich_uploader_asset(item.product, 'imageFile') }}') 50% 50% no-repeat; width: 150px; height: 150px ;"></div></a>
+                    </div>
+                    <div class="col-xs-5 cl-md-6 col-lg-7">
+                        <a href="{{ path('product_show', { 'id': item.product.id }) }}"><p class="title">{{ item.product.name }}</p></a>
+                        <p class="description">{{ item.product.description }}</p>
+                        <p>Price: {{ item.product.price }}$</p>
+                    </div>
+                    <div class="col-xs-2 col-md-2 col-lg-2">
+                        <button onclick="trashItem({{ item.product.id }})" class="btn btn-danger" style="margin-bottom: 10px; float: right;">x</button>
+                        <input onchange="updateQty({{ item.product.id }}, $('#qty{{ item.product.id }}').val())" id="qty{{ item.product.id }}" type="number" value="{{ item.qty }}" style="width: 100%;" min="1"/>
+                    </div>
+                </div>
+
+
+        {% endfor %}
+        <h3>Total: <span id="total_price">{{ total }}</span>$</h3>
+
+        <a href="#" class="btn btn-success">Checkout</a>
+    </div>
+
+
+    <script>
+        function updateQty(id, qty) {
+            $.ajax({
+                method: "POST",
+                data: {
+                    product_id: id,
+                    product_qty: qty
+                },
+                url: "{{ path('change_cart') }}",
+                success: function (response) {
+                    $("#total_price").html(response.new_total);
+                    $("#menu_cart").html("Cart (" + response.total_count + ")");
+                    cartEffect();
+                }
+            });
+        }
+
+        function trashItem(id) {
+            $.ajax({
+                method: "POST",
+                data: {
+                    product_id: id,
+                    product_qty: 0
+                },
+                url: "{{ path('change_cart') }}",
+                success: function (response) {
+                    $("#menu_cart").html("Cart (" + response.total_count + ")");
+                    $("#total_price").html(response.new_total);
+                    $("#item"+id).slideUp();
+                }
+            });
+            cartEffect();
+            
+            
+        }
+    </script>
+{% endblock %}

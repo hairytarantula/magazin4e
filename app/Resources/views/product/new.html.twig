@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}New product{% endblock %}
+    {% block javascripts_begin %}
+        <script src="{{ asset('js/autocomplete.js') }}"></script>
+    {% endblock %}
+{% block body %}
+    <h1>Product creation</h1>
+
+    <a href="{{ path('app_index_index') }}">Back to the list</a>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-success" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+{% endblock %}
