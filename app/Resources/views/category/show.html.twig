@@ -2,20 +2,27 @@
 
 {% block body %}
     <h1>Category</h1>
-    <table>
-    products:
-    {% for product in products %}
-        <tr>
-            product.id
-        </tr>
-        <tr>
-            product.name
-        </tr>
-        <tr>
-            product.description
-        </tr>
-    {% endfor %}
-    </table>
+    <div class="items">
+        {% for article in pagination_products %}
+            <div class="items">
+                <div class="row item-list {% if loop.index is odd %}odd-item{% endif %}">
+                    <div class="col-xs-5 col-md-4 col-lg-3">
+                        <a href="{{ path('product_show', { 'id': article.id }) }}"><div class="thumbnail-p" style="background: url('{{ vich_uploader_asset(article, 'imageFile') }}') 50% 50% no-repeat; width: 150px; height: 150px ;"></div></a>
+                    </div>
+                    <div class="col-xs-5 col-lg-9">
+                        <a href="{{ path('product_show', { 'id': article.id }) }}"><p class="title">{{ article.name }}</p></a>
+                        <p class="description">{{ article.description }}</p>
+                        <i>Price: {{ article.price }}$</i>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination_products) }}
+    </div>
     <table>
         <tbody>
         <tr>

@@ -76,7 +76,7 @@ class ProductController extends Controller
     public function editAction(Request $request, Product $product)
     {
         $deleteForm = $this->createDeleteForm($product);
-        $editForm = $this->createForm('AppBundle\Form\ProductType', $product);
+        $editForm = $this->createForm('AppBundle\Form\ProductType', $product, array('attr' => ['data-source' => $this->generateUrl('category_autocomplete')]));
         $editForm->handleRequest($request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();

@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\Product;
 
 /**
  * @ORM\Table(name="app_user")
@@ -169,7 +170,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function addProduct(\Shop\UserBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -181,7 +182,7 @@ class User extends BaseUser
      *
      * @param \Shop\UserBundle\Entity\Product $product
      */
-    public function removeProduct(\Shop\UserBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }

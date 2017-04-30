@@ -42,18 +42,23 @@ class CartController extends Controller
         $product = $this->getDoctrine()
           ->getRepository('AppBundle:Product')
           ->find($product_id);
+          
         $products = $session->get('products', []);
-        if(!empty($products[$product_id])) {
-            $products[$product_id] += $product_qty;
-        } else {
-            $products[$product_id] = $product_qty;
+        if(!isset($products[$product_id])) {
+            $products[$product_id] = 0;
         }
+        if($products[$product_id] + $product_qty > $product->getInStock()) {
+            return new JsonResponse(
+              ['success' => false, 'new_total' => $current_total, 'path' => $this->generateUrl('view_cart')]
+            );
+        }
+        $products[$product_id] += $product_qty;
         $current_total += $product->getPrice() * $product_qty;
         $session->set('current_total', $current_total);
         $session->set('products', $products);
 
         return new JsonResponse(
-          ['success' => true, 'new_total' => $current_total]
+          ['success' => true, 'new_total' => $current_total, 'remaining' => $product->getInStock() - $products[$product_id]]
         );
     }
 

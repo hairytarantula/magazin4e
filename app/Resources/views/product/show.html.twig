@@ -36,9 +36,9 @@
     <div class="row">
             <div class="col-md-12">
                 <p>Price: {{ product.price }}$</p>
-                <p>Remaining: {{ product.instock }}</p>
+                <p>Remaining: <span id='remaining-count'>{{ product.instock }}</span></p>
                 <button data-id="{{ product.id }}" data-path="{{ path('cart_add') }}" id="add_to_card" class="btn btn-success">Add to cart</button>
-                <a href="{{ path('product_buy', { 'id': product.id }) }}" class="btn btn-warning">Buy</a>
+                <a href="{{ path('product_buy', { 'id': product.id }) }}" id="button-buy" class="btn btn-warning">Buy</a>
                 <hr>
                 {% if is_granted('ROLE_EDITOR') %}
                         {{ form_start(delete_form) }}

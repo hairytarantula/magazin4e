@@ -83,15 +83,21 @@ class CategoryController extends Controller
      * @Route("/{id}", name="category_show")
      * @Method("GET")
      */
-    public function showAction(Category $category)
+    public function showAction(Request $request, Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
         $products = $this->getDoctrine()
           ->getRepository('AppBundle:Product')
           ->findByCategory($category->getTitle());
+          $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+          $products, /* query NOT result */
+          $request->query->getInt('page', 1)/*page number*/,
+          10    /*limit per page*/
+        );
         return $this->render('category/show.html.twig', array(
           'category' => $category,
-          'products' => $products,
+          'pagination_products' => $pagination,
           'delete_form' => $deleteForm->createView(),
         ));
     }

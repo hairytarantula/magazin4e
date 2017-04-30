@@ -33,7 +33,7 @@
     <div class="listing-cateogries">
         <h3>Categories</h3>
         {% for category in categories %}
-        <a href="#"><p>{{ category.title }}</p></a>
+        <a href="{{path('category_show', { 'id': category.id }) }}"><p>{{ category.title }}</p></a>
         {% endfor %}
         <hr>
 

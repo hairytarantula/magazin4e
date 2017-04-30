@@ -1,3 +1,18 @@
+# Fix SSL
+# http:// to https://
+# http://www. to https://
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule .* https://%1%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule .* https://%1%{REQUEST_URI} [R=301,L]
+
+
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
 # mod_rewrite). Additionally, this reduces the matching process for the

@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
-
-
+{% block javascripts_begin %}
+<script src="{{ asset('js/cart.js') }}"></script>
+{% endblock %}
 
 {% block body %}
 
@@ -25,44 +26,6 @@
         {% endfor %}
         <h3>Total: <span id="total_price">{{ total }}</span>$</h3>
 
-        <a href="#" class="btn btn-success">Checkout</a>
+        <a href="{{ path('change_cart') }}" id="checkout-btn" class="btn btn-success" onclick="return false;">Checkout</a>
     </div>
-
-
-    <script>
-        function updateQty(id, qty) {
-            $.ajax({
-                method: "POST",
-                data: {
-                    product_id: id,
-                    product_qty: qty
-                },
-                url: "{{ path('change_cart') }}",
-                success: function (response) {
-                    $("#total_price").html(response.new_total);
-                    $("#menu_cart").html("Cart (" + response.total_count + ")");
-                    cartEffect();
-                }
-            });
-        }
-
-        function trashItem(id) {
-            $.ajax({
-                method: "POST",
-                data: {
-                    product_id: id,
-                    product_qty: 0
-                },
-                url: "{{ path('change_cart') }}",
-                success: function (response) {
-                    $("#menu_cart").html("Cart (" + response.total_count + ")");
-                    $("#total_price").html(response.new_total);
-                    $("#item"+id).slideUp();
-                }
-            });
-            cartEffect();
-            
-            
-        }
-    </script>
 {% endblock %}
